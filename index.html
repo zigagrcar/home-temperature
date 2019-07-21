@@ -1,0 +1,140 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#373a3c">
+  <title>Smart home</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/cosmo/bootstrap.min.css"
+    integrity="sha256-B2v3WDCH+olIjKaUMBXAZdwu1SYlEKs7eqroRv14atA=" crossorigin="anonymous" />
+  <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+  <style>
+    body {
+      padding-top: 5rem;
+      background: #222;
+      font-family: sans-serif, "Segoe UI", Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+
+    .card {
+      background-color: #373a3c;
+      color: #fff;
+    }
+
+    #chart_div {
+      /*height: 300px; width: 300px;*/
+    }
+
+    .sunny {
+      background-image: linear-gradient(to right top, #ff4e50, #ff713e, #ff932b, #ffb41d, #f9d423);
+    }
+
+    .cloudy {
+      background-image: linear-gradient(to right top, #63747c, #71858e, #7f96a0, #8da8b2, #9bbac5);
+    }
+
+    .rainy {
+      background-image: linear-gradient(to right top, #637c7b, #718e8c, #7ea09e, #8db2b0, #9bc5c3);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Smart home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main role="main" class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Smart home</h1>
+      <p class="lead">Temperatura: <span class="badge badge-secondary">Soba</span></p>
+      <hr class="my-4">
+      <p>Status: <span id="connstatus">
+          -----</span></p>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title text-center"><span id="currentTemp">0</span>°C</h2>
+            </div>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title text-center"><span id="currentHumi">0</span>%</h2>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col text-center">
+          <div id="chart_div"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <p class="lead">Vreme zunaj: <span class="badge badge-secondary">Trbovlje</span></p>
+      <div id="weather" class="text-center">
+        <div id="description"></div>
+        <h1 id="temp"></h1>
+        <div id="location"></div>
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <p class="lead">IP: <span class="badge badge-secondary">IPv4</span></p>
+      <div class="col-12 text-center">
+        <h2><span id="myip">127.0.0.1</span></h2>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container text-center">
+      <div lass="col-12">
+        <hr>
+        <p>
+          Copyright © 2019
+      </div>
+    </div>
+  </footer>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
+<script src="./js/main.js"></script>
+
+</html>
